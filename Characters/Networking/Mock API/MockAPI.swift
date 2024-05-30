@@ -13,9 +13,9 @@ enum MockAPI { }
 
 extension MockAPI: API {
     
-    static func getCharacters() -> AnyPublisher<Response, Error> {
-        Future<Response, Error> { promise in
-            promise(.success(Response.fake()))
+    static func getCharacters() -> AnyPublisher<CharactersResponse, Error> {
+        Future<CharactersResponse, Error> { promise in
+            promise(.success(CharactersResponse.fake()))
         }.eraseToAnyPublisher()
     }
 }

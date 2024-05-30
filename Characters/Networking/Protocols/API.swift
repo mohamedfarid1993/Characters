@@ -8,5 +8,5 @@
 import Combine
 
 protocol API {
-    static func getCharacters() -> AnyPublisher<Response, Error>
+    static func getCharacters() -> AnyPublisher<CharactersResponse, Error>
 }

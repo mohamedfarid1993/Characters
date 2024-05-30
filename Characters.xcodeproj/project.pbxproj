@@ -28,6 +28,10 @@
 		72ACE0C42C08F09F00D30027 /* CharactersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C32C08F09F00D30027 /* CharactersRouter.swift */; };
 		72ACE0C72C08F17500D30027 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C62C08F17500D30027 /* MockAPI.swift */; };
 		72ACE0CA2C08F3A800D30027 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C92C08F3A800D30027 /* CharactersListViewModel.swift */; };
+		72ACE0CD2C08F6F300D30027 /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0CC2C08F6F300D30027 /* CharactersResponse.swift */; };
+		72ACE0CF2C08F75B00D30027 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0CE2C08F75B00D30027 /* Info.swift */; };
+		72ACE0D12C08F7A300D30027 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0D02C08F7A300D30027 /* Character.swift */; };
+		72ACE0D32C08FA9500D30027 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0D22C08FA9500D30027 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		72ACE0C32C08F09F00D30027 /* CharactersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRouter.swift; sourceTree = "<group>"; };
 		72ACE0C62C08F17500D30027 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		72ACE0C92C08F3A800D30027 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
+		72ACE0CC2C08F6F300D30027 /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
+		72ACE0CE2C08F75B00D30027 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		72ACE0D02C08F7A300D30027 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		72ACE0D22C08FA9500D30027 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 			children = (
 				7230DD562C08CA9500529868 /* CharactersApp.swift */,
 				7230DD582C08CA9500529868 /* ContentView.swift */,
+				72ACE0CB2C08F6DC00D30027 /* Model */,
 				72ACE0C82C08F37900D30027 /* View Model */,
 				72ACE0B42C08E87600D30027 /* Helpers */,
 				72ACE0A22C08E43F00D30027 /* Networking */,
@@ -222,6 +231,17 @@
 				72ACE0C92C08F3A800D30027 /* CharactersListViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		72ACE0CB2C08F6DC00D30027 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72ACE0CC2C08F6F300D30027 /* CharactersResponse.swift */,
+				72ACE0CE2C08F75B00D30027 /* Info.swift */,
+				72ACE0D02C08F7A300D30027 /* Character.swift */,
+				72ACE0D22C08FA9500D30027 /* Location.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,19 +382,23 @@
 			files = (
 				72ACE0A42C08E44D00D30027 /* NetworkManager.swift in Sources */,
 				72ACE0C22C08F01400D30027 /* APIRouter.swift in Sources */,
+				72ACE0CD2C08F6F300D30027 /* CharactersResponse.swift in Sources */,
 				72ACE0B12C08E61E00D30027 /* CodableInit.swift in Sources */,
 				7230DD592C08CA9500529868 /* ContentView.swift in Sources */,
 				72ACE0B82C08E9A900D30027 /* APIRequestHandler.swift in Sources */,
 				72ACE0BD2C08EAD300D30027 /* Response.swift in Sources */,
 				72ACE0AF2C08E5B300D30027 /* API.swift in Sources */,
 				72ACE0B62C08E88700D30027 /* Constants.swift in Sources */,
+				72ACE0D12C08F7A300D30027 /* Character.swift in Sources */,
 				72ACE0BF2C08EF5200D30027 /* CustomError.swift in Sources */,
 				72ACE0CA2C08F3A800D30027 /* CharactersListViewModel.swift in Sources */,
 				7230DD572C08CA9500529868 /* CharactersApp.swift in Sources */,
 				72ACE0C72C08F17500D30027 /* MockAPI.swift in Sources */,
+				72ACE0D32C08FA9500D30027 /* Location.swift in Sources */,
 				72ACE0C42C08F09F00D30027 /* CharactersRouter.swift in Sources */,
 				72ACE0B32C08E80F00D30027 /* URLRequestBuilder.swift in Sources */,
 				72ACE0BA2C08EA3200D30027 /* HandleAlamofireResponse.swift in Sources */,
+				72ACE0CF2C08F75B00D30027 /* Info.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

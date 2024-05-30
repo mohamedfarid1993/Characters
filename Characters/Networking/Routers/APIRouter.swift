@@ -13,8 +13,8 @@ enum APIRouter {}
 
 extension APIRouter: API {
     
-    static func getCharacters() -> AnyPublisher<Response, Error> {
+    static func getCharacters() -> AnyPublisher<CharactersResponse, Error> {
         CharactersRouter.getCharacters
-            .send(Response.self)
+            .send(CharactersResponse.self)
     }
 }

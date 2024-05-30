@@ -11,7 +11,7 @@ import SwiftUI
 struct CharactersApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CharactersListViewControllerRepresentable()
         }
     }
 }

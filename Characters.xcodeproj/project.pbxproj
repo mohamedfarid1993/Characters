@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7230DD572C08CA9500529868 /* CharactersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD562C08CA9500529868 /* CharactersApp.swift */; };
-		7230DD592C08CA9500529868 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD582C08CA9500529868 /* ContentView.swift */; };
 		7230DD5B2C08CA9600529868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7230DD5A2C08CA9600529868 /* Assets.xcassets */; };
 		7230DD5E2C08CA9600529868 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7230DD5D2C08CA9600529868 /* Preview Assets.xcassets */; };
 		7230DD722C08CA9700529868 /* CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD712C08CA9700529868 /* CharactersUITests.swift */; };
@@ -33,6 +32,8 @@
 		72ACE0D32C08FA9500D30027 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0D22C08FA9500D30027 /* Location.swift */; };
 		72ACE0D62C09020000D30027 /* NetworkLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0D52C09020000D30027 /* NetworkLayerTest.swift */; };
 		72ACE0D82C09043A00D30027 /* RoutersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0D72C09043A00D30027 /* RoutersTests.swift */; };
+		72ACE0DB2C09063000D30027 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */; };
+		72ACE0DE2C09065400D30027 /* CharactersListViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,6 @@
 /* Begin PBXFileReference section */
 		7230DD532C08CA9500529868 /* Characters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Characters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7230DD562C08CA9500529868 /* CharactersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersApp.swift; sourceTree = "<group>"; };
-		7230DD582C08CA9500529868 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7230DD5A2C08CA9600529868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7230DD5D2C08CA9600529868 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7230DD632C08CA9700529868 /* CharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +81,8 @@
 		72ACE0D22C08FA9500D30027 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		72ACE0D52C09020000D30027 /* NetworkLayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTest.swift; sourceTree = "<group>"; };
 		72ACE0D72C09043A00D30027 /* RoutersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutersTests.swift; sourceTree = "<group>"; };
+		72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
+		72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewControllerRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				7230DD562C08CA9500529868 /* CharactersApp.swift */,
-				7230DD582C08CA9500529868 /* ContentView.swift */,
 				72ACE0CB2C08F6DC00D30027 /* Model */,
+				72ACE0D92C0905BE00D30027 /* View */,
 				72ACE0C82C08F37900D30027 /* View Model */,
 				72ACE0B42C08E87600D30027 /* Helpers */,
 				72ACE0A22C08E43F00D30027 /* Networking */,
@@ -253,6 +255,23 @@
 				72ACE0D72C09043A00D30027 /* RoutersTests.swift */,
 			);
 			path = "Networking Tests";
+			sourceTree = "<group>";
+		};
+		72ACE0D92C0905BE00D30027 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72ACE0DC2C09063400D30027 /* Characters List */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72ACE0DC2C09063400D30027 /* Characters List */ = {
+			isa = PBXGroup;
+			children = (
+				72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */,
+				72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */,
+			);
+			path = "Characters List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,16 +410,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72ACE0DB2C09063000D30027 /* CharactersListViewController.swift in Sources */,
 				72ACE0A42C08E44D00D30027 /* NetworkManager.swift in Sources */,
 				72ACE0C22C08F01400D30027 /* APIRouter.swift in Sources */,
 				72ACE0CD2C08F6F300D30027 /* CharactersResponse.swift in Sources */,
 				72ACE0B12C08E61E00D30027 /* CodableInit.swift in Sources */,
-				7230DD592C08CA9500529868 /* ContentView.swift in Sources */,
 				72ACE0B82C08E9A900D30027 /* APIRequestHandler.swift in Sources */,
 				72ACE0BD2C08EAD300D30027 /* Response.swift in Sources */,
 				72ACE0AF2C08E5B300D30027 /* API.swift in Sources */,
 				72ACE0B62C08E88700D30027 /* Constants.swift in Sources */,
 				72ACE0D12C08F7A300D30027 /* Character.swift in Sources */,
+				72ACE0DE2C09065400D30027 /* CharactersListViewControllerRepresentable.swift in Sources */,
 				72ACE0BF2C08EF5200D30027 /* CustomError.swift in Sources */,
 				72ACE0CA2C08F3A800D30027 /* CharactersListViewModel.swift in Sources */,
 				7230DD572C08CA9500529868 /* CharactersApp.swift in Sources */,

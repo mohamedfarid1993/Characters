@@ -27,6 +27,7 @@
 		72ACE0C22C08F01400D30027 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C12C08F01400D30027 /* APIRouter.swift */; };
 		72ACE0C42C08F09F00D30027 /* CharactersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C32C08F09F00D30027 /* CharactersRouter.swift */; };
 		72ACE0C72C08F17500D30027 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C62C08F17500D30027 /* MockAPI.swift */; };
+		72ACE0CA2C08F3A800D30027 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0C92C08F3A800D30027 /* CharactersListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		72ACE0C12C08F01400D30027 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		72ACE0C32C08F09F00D30027 /* CharactersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRouter.swift; sourceTree = "<group>"; };
 		72ACE0C62C08F17500D30027 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		72ACE0C92C08F3A800D30027 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +124,11 @@
 			children = (
 				7230DD562C08CA9500529868 /* CharactersApp.swift */,
 				7230DD582C08CA9500529868 /* ContentView.swift */,
-				7230DD5A2C08CA9600529868 /* Assets.xcassets */,
+				72ACE0C82C08F37900D30027 /* View Model */,
 				72ACE0B42C08E87600D30027 /* Helpers */,
 				72ACE0A22C08E43F00D30027 /* Networking */,
 				7230DD5C2C08CA9600529868 /* Preview Content */,
+				7230DD5A2C08CA9600529868 /* Assets.xcassets */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -211,6 +214,14 @@
 				72ACE0C62C08F17500D30027 /* MockAPI.swift */,
 			);
 			path = "Mock API";
+			sourceTree = "<group>";
+		};
+		72ACE0C82C08F37900D30027 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				72ACE0C92C08F3A800D30027 /* CharactersListViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +369,7 @@
 				72ACE0AF2C08E5B300D30027 /* API.swift in Sources */,
 				72ACE0B62C08E88700D30027 /* Constants.swift in Sources */,
 				72ACE0BF2C08EF5200D30027 /* CustomError.swift in Sources */,
+				72ACE0CA2C08F3A800D30027 /* CharactersListViewModel.swift in Sources */,
 				7230DD572C08CA9500529868 /* CharactersApp.swift in Sources */,
 				72ACE0C72C08F17500D30027 /* MockAPI.swift in Sources */,
 				72ACE0C42C08F09F00D30027 /* CharactersRouter.swift in Sources */,

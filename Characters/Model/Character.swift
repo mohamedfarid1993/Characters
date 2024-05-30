@@ -18,7 +18,6 @@ struct Character: CodableInit {
     let image: String
     let episode: [String]
     let url: String
-    let created: String
 }
 
 enum Status: String, CodableInit {
@@ -40,8 +39,7 @@ extension Character {
                      location: Location = Location.fake(),
                      image: String = "",
                      episode: [String] = ["E1", "E2"],
-                     url: String = "",
-                     created: String = "") -> Character {
+                     url: String = "") -> Character {
         Character(id: id,
                   name: name,
                   status: status,
@@ -52,7 +50,6 @@ extension Character {
                   location: location,
                   image: image,
                   episode: episode,
-                  url: url,
-                  created: created)
+                  url: url)
     }
 }

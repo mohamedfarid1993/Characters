@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import Alamofire
+
+enum NetworkManager {
+    static let session: Session = {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.timeoutIntervalForRequest = 30
+        return Session(configuration: configuration)
+    }()
+}

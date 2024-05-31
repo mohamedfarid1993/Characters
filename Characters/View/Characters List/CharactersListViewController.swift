@@ -57,6 +57,7 @@ class CharactersListViewController: UIViewController {
 
 extension CharactersListViewController {
     private func setupNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = "Characters"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         

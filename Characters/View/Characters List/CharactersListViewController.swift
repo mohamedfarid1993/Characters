@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class CharactersListViewController: UIViewController {
     
@@ -30,6 +31,10 @@ class CharactersListViewController: UIViewController {
         }
     }
     
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
     // MARK: - Life Cycle View Methods
     
     override func viewDidLoad() {
@@ -37,6 +42,7 @@ class CharactersListViewController: UIViewController {
         
         self.addSubviews()
         self.addSubviewsConstraints()
+        self.subscribeToViewModelStatePublisher()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +72,47 @@ extension CharactersListViewController {
     }
 }
 
+// MARK: - Subscriptions
+
+extension CharactersListViewController {
+    
+    private func subscribeToViewModelStatePublisher() {
+        self.viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                switch self.viewModel.state {
+                case .loading:
+                    self.handleLoading()
+                case .loaded:
+                    self.handleLoaded()
+                case .failed(let error):
+                    self.handleFailed(error)
+                }
+            }
+            .store(in: &self.subscriptions)
+    }
+}
+
+// MARK: - State Handlers
+
+extension CharactersListViewController {
+    
+    private func handleLoading() {
+        self.showActivityIndicator()
+        self.collectionView.isScrollEnabled = false
+        self.collectionView.reloadData()
+    }
+    
+    private func handleLoaded() {
+        self.hideActivityIndicator()
+    }
+    
+    private func handleFailed(_ error: Error) {
+        self.hideActivityIndicator()
+    }
+}
+
 // MARK: - Add Subviews
 
 extension CharactersListViewController {
@@ -76,6 +123,25 @@ extension CharactersListViewController {
     
     private func addSubviewsConstraints() {
         self.addStatusesCollectionViewConstraints()
+    }
+}
+
+// MARK: - Activity Indicator
+
+extension CharactersListViewController {
+    
+    // MARK: Show Activity Indicator
+    
+    private func showActivityIndicator() {
+        self.activityIndicator.startAnimating()
+        self.collectionView.backgroundView = self.activityIndicator
+    }
+    
+    // MARK: Hide Activity Indicator
+    
+    private func hideActivityIndicator() {
+        self.collectionView.backgroundView = nil
+        self.activityIndicator.stopAnimating()
     }
 }
 
@@ -100,6 +166,7 @@ extension CharactersListViewController {
         self.collectionView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide)
             $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalToSuperview()
             $0.height.equalTo(40)
         }
     }
@@ -129,8 +196,12 @@ extension CharactersListViewController {
 
 extension CharactersListViewController: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        self.viewModel.sections().count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.viewModel.characterStatuses.count
+        self.viewModel.numberOfItems(in: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -10,8 +10,7 @@ import Combine
 
 class CharactersListViewModel: ObservableObject {
     enum State {
-        case loading, loaded(characters: [Character])
-        case failed(error: Error)
+        case loading, loaded, failed(error: Error)
     }
     
     enum Section {
@@ -27,7 +26,8 @@ class CharactersListViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     private(set) var selectedStatusIndex: Int? = nil
 
-    var characterStatuses = ["alive", "dead", "unknown"]
+    private var characterStatuses = ["alive", "dead", "unknown"]
+    private var characters: [Character] = []
     
     // MARK: Initializers
     
@@ -53,7 +53,8 @@ extension CharactersListViewModel {
                 guard case let .failure(error) = completion else { return }
                 self?.state = .failed(error: error)
             }, receiveValue: { [weak self] response in
-                self?.state = .loaded(characters: response.characters)
+                self?.characters = response.characters
+                self?.state = .loaded
             })
             .store(in: &self.subscriptions)
     }
@@ -63,6 +64,7 @@ extension CharactersListViewModel {
     func getCharacters(by index: Int) {
         guard index != self.selectedStatusIndex else { return }
         self.selectedStatusIndex = index
+        self.state = .loading
     }
 }
 
@@ -72,6 +74,15 @@ extension CharactersListViewModel {
     
     func sections() -> [Section] {
         [.statuses, .characters]
+    }
+    
+    func numberOfItems(in section: Int) -> Int {
+        switch self.sections()[section] {
+        case .statuses:
+            return self.characterStatuses.count
+        case .characters:
+            return self.characters.count
+        }
     }
     
     func status(by index: Int) -> String? {

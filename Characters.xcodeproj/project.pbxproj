@@ -42,6 +42,7 @@
 		72ACE0ED2C0A2A9F00D30027 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0EC2C0A2A9F00D30027 /* UIStackView.swift */; };
 		72ACE0F02C0A343600D30027 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 72ACE0EF2C0A343600D30027 /* Kingfisher */; };
 		72ACE0F22C0A344500D30027 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0F12C0A344500D30027 /* ImageProvider.swift */; };
+		72ACE0F42C0A36EE00D30027 /* ImageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0F32C0A36EE00D30027 /* ImageProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		72ACE0EA2C0A1C6100D30027 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		72ACE0EC2C0A2A9F00D30027 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		72ACE0F12C0A344500D30027 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		72ACE0F32C0A36EE00D30027 /* ImageProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				72ACE0A32C08E44D00D30027 /* NetworkManager.swift */,
+				72ACE0F12C0A344500D30027 /* ImageProvider.swift */,
 				72ACE0AD2C08E59F00D30027 /* Protocols */,
 				72ACE0BB2C08EAB700D30027 /* Response Handling */,
 				72ACE0C02C08F00300D30027 /* Routers */,
@@ -217,7 +220,6 @@
 			children = (
 				72ACE0B52C08E88700D30027 /* Constants.swift */,
 				72ACE0DF2C09FAF000D30027 /* Theme.swift */,
-				72ACE0F12C0A344500D30027 /* ImageProvider.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -272,6 +274,7 @@
 			children = (
 				72ACE0D52C09020000D30027 /* NetworkLayerTest.swift */,
 				72ACE0D72C09043A00D30027 /* RoutersTests.swift */,
+				72ACE0F32C0A36EE00D30027 /* ImageProviderTests.swift */,
 			);
 			path = "Networking Tests";
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			files = (
 				72ACE0D82C09043A00D30027 /* RoutersTests.swift in Sources */,
 				72ACE0D62C09020000D30027 /* NetworkLayerTest.swift in Sources */,
+				72ACE0F42C0A36EE00D30027 /* ImageProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,7 +40,7 @@ class NetworkLayerTest: XCTestCase, HandleAlamofireResponse {
                 guard case .failure = completion else { return }
                 XCTFail("Fetching Video Failed")
             }, receiveValue: { charactersData in
-                XCTAssertEqual(charactersData.results.first?.id, charactersResponse.results.first?.id)
+                XCTAssertEqual(charactersData.characters.first?.id, charactersResponse.characters.first?.id)
             })
         subscription.cancel()
     }

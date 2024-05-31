@@ -30,6 +30,7 @@ enum Gender: String, CodableInit {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
+    case genderless = "Genderless"
 }
 
 // MARK: - Factory

@@ -13,7 +13,7 @@ enum MockAPI { }
 
 extension MockAPI: API {
     
-    static func getCharacters(by status: String?) -> AnyPublisher<CharactersResponse, Error> {
+    static func getCharacters(by status: String?, in page: Int) -> AnyPublisher<CharactersResponse, Error> {
         Future<CharactersResponse, Error> { promise in
             promise(.success(CharactersResponse.fake()))
         }.eraseToAnyPublisher()

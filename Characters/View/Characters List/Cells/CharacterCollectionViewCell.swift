@@ -58,7 +58,7 @@ extension CharacterCollectionViewCell {
         case .female:
             self.contentView.backgroundColor = Theme.Colors.femaleLightPink
             self.contentView.layer.borderColor = Theme.Colors.femaleLightPink.cgColor
-        case .unknown:
+        case .unknown, .genderless:
             self.contentView.backgroundColor = .clear
             self.contentView.layer.borderColor = Theme.Colors.borderLightPurple.cgColor
         }

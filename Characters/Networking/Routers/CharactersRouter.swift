@@ -12,12 +12,13 @@ enum CharactersRouter: URLRequestBuilder {
         
     // MARK: - APIs
     
-    case getCharacters(status: String?)
+    case getCharacters(status: String?, page: Int)
     
     // MARK: Properties
     
     static let charactersPath = "character"
     static let statusParameterKey = "status"
+    static let pageParameterKey = "page"
 }
 
 extension CharactersRouter {
@@ -31,9 +32,12 @@ extension CharactersRouter {
     
     var parameters: Parameters? {
         switch self {
-        case .getCharacters(let status):
-            guard let status = status else { return nil }
-            return [CharactersRouter.statusParameterKey: status]
+        case .getCharacters(let status, let page):
+            guard let status = status else { return [CharactersRouter.pageParameterKey: page] }
+            return [
+                CharactersRouter.statusParameterKey: status,
+                CharactersRouter.pageParameterKey: page
+            ]
         }
     }
     

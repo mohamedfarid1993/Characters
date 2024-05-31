@@ -21,14 +21,20 @@ struct CharacterDetailsView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .topLeading) {
-                VStack(spacing: 24) {
+                VStack(alignment: .leading, spacing: 24) {
                     CharacterImageView(geometry)
-                    HStack {
-                        CharacterName()
-                        Spacer()
-                        Status()
-                    }
-                    .padding(.horizontal)
+                    VStack(spacing: 0) {
+                        HStack {
+                            CharacterName()
+                            Spacer()
+                            Status()
+                        }
+                        HStack {
+                            SpeciesGenderText()
+                            Spacer()
+                        }
+                    }.padding(.horizontal)
+                    LocationText().padding(.horizontal)
                 }
                 BackButton()
             }
@@ -84,9 +90,30 @@ extension CharacterDetailsView {
             .multilineTextAlignment(.center)
             .padding()
             .background(RoundedRectangle(cornerRadius: 15)
-                .fill(Color.cyan)
-                .frame(height: 30)
-            )
+                .fill(Color.cyan).frame(height: 30)
+            ).frame(height: 30)
+    }
+    
+    // MARK: Species & Gender Text
+    
+    private func SpeciesGenderText() -> some View {
+        Text(self.character.species + " •")
+            .foregroundStyle(Color(uiColor: Theme.Colors.titlesDarkPurple))
+        +
+        Text(" " + self.character.gender.rawValue)
+            .foregroundStyle(Color(uiColor: Theme.Colors.subtitlesLightPurple))
+    }
+    
+    // MARK: Location
+    
+    private func LocationText() -> some View {
+        Text("Location: ")
+            .foregroundStyle(Color(uiColor: Theme.Colors.titlesDarkPurple))
+            .fontWeight(.semibold)
+            .font(.title3)
+        +
+        Text(self.character.location.name)
+            .foregroundStyle(Color(uiColor: Theme.Colors.titlesDarkPurple))
     }
 }
 

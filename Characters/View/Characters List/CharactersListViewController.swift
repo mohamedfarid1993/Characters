@@ -27,7 +27,7 @@ class CharactersListViewController: UIViewController {
         case .statuses:
             return self.statusesLayout()
         case .characters:
-            return self.statusesLayout()
+            return self.charactersLayout()
         }
     }
     
@@ -106,11 +106,13 @@ extension CharactersListViewController {
     
     private func handleLoaded() {
         self.hideActivityIndicator()
+        self.collectionView.isScrollEnabled = true
         self.collectionView.reloadData()
     }
     
     private func handleFailed(_ error: Error) {
         self.hideActivityIndicator()
+        self.collectionView.isScrollEnabled = false
     }
 }
 
@@ -119,11 +121,11 @@ extension CharactersListViewController {
 extension CharactersListViewController {
     
     private func addSubviews() {
-        self.addStatusesCollectionView()
+        self.addCollectionView()
     }
     
     private func addSubviewsConstraints() {
-        self.addStatusesCollectionViewConstraints()
+        self.addCollectionViewConstraints()
     }
 }
 
@@ -146,25 +148,26 @@ extension CharactersListViewController {
     }
 }
 
-// MARK: - Add Statuses Collection View
+// MARK: - Add Collection View
 
 extension CharactersListViewController {
     
-    private func addStatusesCollectionView() {
+    private func addCollectionView() {
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.contentInsetAdjustmentBehavior = .never
         self.collectionView.allowsMultipleSelection = false
+        self.collectionView.alwaysBounceVertical = true
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.contentInset.left = 16
+        self.collectionView.isScrollEnabled = true
         
         self.collectionView.register(StatusCollectionViewCell.self)
         self.collectionView.register(CharacterCollectionViewCell.self)
         self.view.addSubview(self.collectionView)
     }
     
-    private func addStatusesCollectionViewConstraints() {
+    private func addCollectionViewConstraints() {
         self.collectionView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide)
             $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(16)
@@ -187,8 +190,23 @@ extension CharactersListViewController {
         group.interItemSpacing = .fixed(8)
         
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
+        
+        return section
+    }
+    
+    private func charactersLayout() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16)
         
         return section
     }
@@ -226,11 +244,17 @@ extension CharactersListViewController: UICollectionViewDataSource {
 
 extension CharactersListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == self.viewModel.selectedStatusIndex {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            self.viewModel.getCharacters()
-        } else {
-            self.viewModel.getCharacters(by: indexPath.item)
+        let sections = self.viewModel.sections()
+        switch sections[indexPath.section] {
+        case .statuses:
+            if indexPath.item == self.viewModel.selectedStatusIndex {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                self.viewModel.getCharacters()
+            } else {
+                self.viewModel.getCharacters(by: indexPath.item)
+            }
+        case .characters:
+            print("TODO")
         }
     }
 }

@@ -106,6 +106,7 @@ extension CharactersListViewController {
     
     private func handleLoaded() {
         self.hideActivityIndicator()
+        self.collectionView.reloadData()
     }
     
     private func handleFailed(_ error: Error) {
@@ -159,6 +160,7 @@ extension CharactersListViewController {
         self.collectionView.contentInset.left = 16
         
         self.collectionView.register(StatusCollectionViewCell.self)
+        self.collectionView.register(CharacterCollectionViewCell.self)
         self.view.addSubview(self.collectionView)
     }
     
@@ -167,7 +169,6 @@ extension CharactersListViewController {
             $0.horizontalEdges.equalTo(self.view.safeAreaLayoutGuide)
             $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(16)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(40)
         }
     }
 }
@@ -178,15 +179,16 @@ extension CharactersListViewController {
     
     private func statusesLayout() -> NSCollectionLayoutSection {
         
-        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1.0), heightDimension: .absolute(40))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(40), heightDimension: .absolute(40))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         group.interItemSpacing = .fixed(8)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         
         return section
     }
@@ -205,9 +207,18 @@ extension CharactersListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(StatusCollectionViewCell.self, for: indexPath)
-        cell.setup(with: self.viewModel.status(by: indexPath.item) ?? "")
-        return cell
+        let sections = self.viewModel.sections()
+        switch sections[indexPath.section] {
+        case .statuses:
+            let cell = collectionView.dequeue(StatusCollectionViewCell.self, for: indexPath)
+            cell.setup(with: self.viewModel.status(by: indexPath.item) ?? "")
+            return cell
+        case .characters:
+            let cell = collectionView.dequeue(CharacterCollectionViewCell.self, for: indexPath)
+            guard let character = self.viewModel.character(by: indexPath.item) else { return UICollectionViewCell() }
+            cell.setup(with: character)
+            return cell
+        }
     }
 }
 

@@ -73,7 +73,12 @@ extension CharactersListViewModel {
 extension CharactersListViewModel {
     
     func sections() -> [Section] {
-        [.statuses, .characters]
+        switch self.state {
+        case .loading, .failed:
+            return [.statuses]
+        case .loaded:
+            return [.statuses, .characters]
+        }
     }
     
     func numberOfItems(in section: Int) -> Int {
@@ -87,5 +92,9 @@ extension CharactersListViewModel {
     
     func status(by index: Int) -> String? {
         index < self.characterStatuses.count ? self.characterStatuses[index] : nil
+    }
+    
+    func character(by index: Int) -> Character? {
+        index < self.characters.count ? self.characters[index] : nil
     }
 }

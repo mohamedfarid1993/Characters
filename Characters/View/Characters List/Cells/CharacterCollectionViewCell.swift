@@ -1,5 +1,5 @@
 //
-//  StatusCollectionViewCell.swift
+//  CharacterCollectionViewCell.swift
 //  Characters
 //
 //  Created by Mohamed Farid on 31/05/2024.
@@ -7,22 +7,9 @@
 
 import UIKit
 
-class StatusCollectionViewCell: UICollectionViewCell {
+class CharacterCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
-    
-    override var isSelected: Bool {
-        didSet {
-            switch isSelected {
-            case true:
-                self.statusLabel.textColor = .white
-                self.contentView.backgroundColor = Theme.Colors.subtitlesLightPurple
-            case false:
-                self.statusLabel.textColor = Theme.Colors.titlesDarkPurple
-                self.contentView.backgroundColor = .clear
-            }
-        }
-    }
     
     let statusLabel = UILabel()
     
@@ -52,17 +39,17 @@ class StatusCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Setup View Methods
 
-extension StatusCollectionViewCell {
+extension CharacterCollectionViewCell {
     
-    func setup(with status: String) {
-        self.statusLabel.text = status.capitalized
+    func setup(with character: Character) {
+        self.statusLabel.text = character.name
         self.layoutIfNeeded()
     }
 }
 
 // MARK: - Add Subviews
 
-extension StatusCollectionViewCell {
+extension CharacterCollectionViewCell {
     
     private func addSubviews() {
         self.addStatusLabel()
@@ -75,7 +62,7 @@ extension StatusCollectionViewCell {
 
 // MARK: - Add Category Label
 
-extension StatusCollectionViewCell {
+extension CharacterCollectionViewCell {
     
     private func addStatusLabel() {
         self.statusLabel.textColor = Theme.Colors.titlesDarkPurple
@@ -84,9 +71,9 @@ extension StatusCollectionViewCell {
     
     private func addStatusLabelConstraints() {
         self.statusLabel.snp.makeConstraints {
-            $0.centerY.equalTo(self.contentView)
-            $0.top.equalToSuperview().offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.center.equalTo(self.contentView)
+            $0.top.equalTo(self.contentView).offset(10)
+            $0.leading.equalTo(self.contentView).offset(16)
         }
     }
 }

@@ -11,11 +11,13 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     
-    private let contentStackView = UIStackView(axis: .vertical, spacing: 8, alignment: .top, distribution: .fillProportionally)
+    private let contentStackView = UIStackView(axis: .vertical, spacing: 4, alignment: .top, distribution: .fillProportionally)
 
     private let nameLabel = UILabel()
     private let speciesLabel = UILabel()
     private let imageView = UIImageView()
+    
+    private let imageDimension: CGFloat = 90
     
     // MARK: Initializers
     
@@ -44,7 +46,10 @@ extension CharacterCollectionViewCell {
     func setup(with character: Character) {
         self.nameLabel.text = character.name
         self.speciesLabel.text = character.species
-        self.imageView.image = UIImage(systemName: "person.crop.circle")
+        ImageProvider.loadImage(with: URL(string: character.image),
+                                into: self.imageView,
+                                using: ImageProvider.Configuration(placeholder: UIImage(systemName: "person.crop.circle"),
+                                                                   size: CGSize(width: self.imageDimension, height: self.imageDimension)))
         
         switch character.gender {
         case .male:
@@ -87,7 +92,7 @@ extension CharacterCollectionViewCell {
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.tintColor = .black
         self.imageView.clipsToBounds = true
-        self.layer.cornerRadius = 8
+        self.imageView.layer.cornerRadius = 10
         self.contentView.addSubview(self.imageView)
     }
     
@@ -95,7 +100,7 @@ extension CharacterCollectionViewCell {
         self.imageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(90)
+            $0.width.height.equalTo(self.imageDimension)
         }
     }
 }
@@ -124,6 +129,7 @@ extension CharacterCollectionViewCell {
     
     private func addNameLabel() {
         self.nameLabel.textColor = Theme.Colors.titlesDarkPurple
+        self.nameLabel.font = .boldSystemFont(ofSize: 18)
         self.contentStackView.addArrangedSubview(self.nameLabel)
     }
 }

@@ -34,6 +34,7 @@
 		72ACE0D82C09043A00D30027 /* RoutersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0D72C09043A00D30027 /* RoutersTests.swift */; };
 		72ACE0DB2C09063000D30027 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */; };
 		72ACE0DE2C09065400D30027 /* CharactersListViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */; };
+		72ACE0E02C09FAF000D30027 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DF2C09FAF000D30027 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		72ACE0D72C09043A00D30027 /* RoutersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutersTests.swift; sourceTree = "<group>"; };
 		72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
 		72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		72ACE0DF2C09FAF000D30027 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				72ACE0B52C08E88700D30027 /* Constants.swift */,
+				72ACE0DF2C09FAF000D30027 /* Theme.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				72ACE0CD2C08F6F300D30027 /* CharactersResponse.swift in Sources */,
 				72ACE0B12C08E61E00D30027 /* CodableInit.swift in Sources */,
 				72ACE0B82C08E9A900D30027 /* APIRequestHandler.swift in Sources */,
+				72ACE0E02C09FAF000D30027 /* Theme.swift in Sources */,
 				72ACE0BD2C08EAD300D30027 /* Response.swift in Sources */,
 				72ACE0AF2C08E5B300D30027 /* API.swift in Sources */,
 				72ACE0B62C08E88700D30027 /* Constants.swift in Sources */,

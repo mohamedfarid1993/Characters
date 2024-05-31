@@ -43,12 +43,17 @@ extension CharactersListViewModel {
     
     // MARK: Get Characters
     
-    func getCharacters() {
-        self.selectedStatusIndex = nil
+    func getCharacters(by index: Int? = nil) {
+        self.selectedStatusIndex = index
         self.state = .loading
         
+        var status: String? = nil
+        if let index = index {
+            status = self.status(by: index)
+        }
+        
         self.api
-            .getCharacters()
+            .getCharacters(by: status)
             .sink(receiveCompletion: { [weak self] completion in
                 guard case let .failure(error) = completion else { return }
                 self?.state = .failed(error: error)
@@ -57,14 +62,6 @@ extension CharactersListViewModel {
                 self?.state = .loaded
             })
             .store(in: &self.subscriptions)
-    }
-    
-    // MARK: - Get Characters By Status
-    
-    func getCharacters(by index: Int) {
-        guard index != self.selectedStatusIndex else { return }
-        self.selectedStatusIndex = index
-        self.state = .loading
     }
 }
 

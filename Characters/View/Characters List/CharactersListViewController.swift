@@ -103,13 +103,15 @@ extension CharactersListViewController {
     private func handleLoading() {
         self.showActivityIndicator()
         self.collectionView.isScrollEnabled = false
-        self.collectionView.reloadData()
     }
     
     private func handleLoaded() {
         self.hideActivityIndicator()
         self.collectionView.isScrollEnabled = true
         self.collectionView.reloadData()
+        if let selectedStatusIndex = self.viewModel.selectedStatusIndex {
+            self.collectionView.selectItem(at: IndexPath(item: selectedStatusIndex, section: 0), animated: false, scrollPosition: .centeredVertically)
+        }
     }
     
     private func handleFailed(_ error: Error) {

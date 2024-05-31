@@ -35,6 +35,9 @@
 		72ACE0DB2C09063000D30027 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */; };
 		72ACE0DE2C09065400D30027 /* CharactersListViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */; };
 		72ACE0E02C09FAF000D30027 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0DF2C09FAF000D30027 /* Theme.swift */; };
+		72ACE0E32C0A040E00D30027 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 72ACE0E22C0A040E00D30027 /* SnapKit */; };
+		72ACE0E62C0A045900D30027 /* StatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0E52C0A045900D30027 /* StatusCollectionViewCell.swift */; };
+		72ACE0E92C0A04E800D30027 /* UICollectioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0E82C0A04E800D30027 /* UICollectioView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,8 @@
 		72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
 		72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		72ACE0DF2C09FAF000D30027 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		72ACE0E52C0A045900D30027 /* StatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCollectionViewCell.swift; sourceTree = "<group>"; };
+		72ACE0E82C0A04E800D30027 /* UICollectioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectioView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72ACE0AC2C08E50E00D30027 /* Alamofire in Frameworks */,
+				72ACE0E32C0A040E00D30027 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +147,7 @@
 				72ACE0D92C0905BE00D30027 /* View */,
 				72ACE0C82C08F37900D30027 /* View Model */,
 				72ACE0B42C08E87600D30027 /* Helpers */,
+				72ACE0E72C0A04CF00D30027 /* Extensions */,
 				72ACE0A22C08E43F00D30027 /* Networking */,
 				7230DD5C2C08CA9600529868 /* Preview Content */,
 				7230DD5A2C08CA9600529868 /* Assets.xcassets */,
@@ -271,10 +278,27 @@
 		72ACE0DC2C09063400D30027 /* Characters List */ = {
 			isa = PBXGroup;
 			children = (
+				72ACE0E42C0A043B00D30027 /* Cells */,
 				72ACE0DA2C09063000D30027 /* CharactersListViewController.swift */,
 				72ACE0DD2C09065400D30027 /* CharactersListViewControllerRepresentable.swift */,
 			);
 			path = "Characters List";
+			sourceTree = "<group>";
+		};
+		72ACE0E42C0A043B00D30027 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				72ACE0E52C0A045900D30027 /* StatusCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		72ACE0E72C0A04CF00D30027 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				72ACE0E82C0A04E800D30027 /* UICollectioView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +319,7 @@
 			name = Characters;
 			packageProductDependencies = (
 				72ACE0AB2C08E50E00D30027 /* Alamofire */,
+				72ACE0E22C0A040E00D30027 /* SnapKit */,
 			);
 			productName = Characters;
 			productReference = 7230DD532C08CA9500529868 /* Characters.app */;
@@ -370,6 +395,7 @@
 			mainGroup = 7230DD4A2C08CA9500529868;
 			packageReferences = (
 				72ACE0AA2C08E50E00D30027 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				72ACE0E12C0A040E00D30027 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7230DD542C08CA9500529868 /* Products */;
 			projectDirPath = "";
@@ -429,6 +455,8 @@
 				72ACE0CA2C08F3A800D30027 /* CharactersListViewModel.swift in Sources */,
 				7230DD572C08CA9500529868 /* CharactersApp.swift in Sources */,
 				72ACE0C72C08F17500D30027 /* MockAPI.swift in Sources */,
+				72ACE0E62C0A045900D30027 /* StatusCollectionViewCell.swift in Sources */,
+				72ACE0E92C0A04E800D30027 /* UICollectioView.swift in Sources */,
 				72ACE0D32C08FA9500D30027 /* Location.swift in Sources */,
 				72ACE0C42C08F09F00D30027 /* CharactersRouter.swift in Sources */,
 				72ACE0B32C08E80F00D30027 /* URLRequestBuilder.swift in Sources */,
@@ -778,6 +806,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		72ACE0E12C0A040E00D30027 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -785,6 +821,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 72ACE0AA2C08E50E00D30027 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		72ACE0E22C0A040E00D30027 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72ACE0E12C0A040E00D30027 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

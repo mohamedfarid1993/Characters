@@ -20,7 +20,9 @@ class CharactersListViewModel: ObservableObject {
     
     private let api: API.Type
     private var subscriptions = Set<AnyCancellable>()
+    private(set) var selectedStatusIndex: Int? = nil
 
+    var characterStatuses = ["alive", "dead", "unknown"]
     
     // MARK: Initializers
     
@@ -36,7 +38,8 @@ extension CharactersListViewModel {
     
     // MARK: Get Characters
     
-    private func getCharacters() {
+    func getCharacters() {
+        self.selectedStatusIndex = nil
         self.state = .loading
         
         self.api
@@ -48,5 +51,21 @@ extension CharactersListViewModel {
                 self?.state = .loaded(characters: [])
             })
             .store(in: &self.subscriptions)
+    }
+    
+    // MARK: - Get Characters By Status
+    
+    func getCharacters(by index: Int) {
+        guard index != self.selectedStatusIndex else { return }
+        self.selectedStatusIndex = index
+    }
+}
+
+// MARK: - Data Source
+
+extension CharactersListViewModel {
+    
+    func getStatus(by index: Int) -> String? {
+        index < self.characterStatuses.count ? self.characterStatuses[index] : nil
     }
 }

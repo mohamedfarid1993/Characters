@@ -14,6 +14,11 @@ class CharactersListViewModel: ObservableObject {
         case failed(error: Error)
     }
     
+    enum Section {
+        case statuses
+        case characters
+    }
+    
     // MARK: Properties
     
     @Published var state: State = .loading
@@ -65,7 +70,11 @@ extension CharactersListViewModel {
 
 extension CharactersListViewModel {
     
-    func getStatus(by index: Int) -> String? {
+    func sections() -> [Section] {
+        [.statuses, .characters]
+    }
+    
+    func status(by index: Int) -> String? {
         index < self.characterStatuses.count ? self.characterStatuses[index] : nil
     }
 }

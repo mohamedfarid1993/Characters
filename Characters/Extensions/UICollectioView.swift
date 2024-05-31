@@ -7,6 +7,16 @@
 
 import UIKit
 
+// MARK: - Initializers
+
+extension UICollectionView {
+    convenience init(sectionProvider: @escaping UICollectionViewCompositionalLayoutSectionProvider) {
+        let compositionalLayout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+        
+        self.init(frame: .zero, collectionViewLayout: compositionalLayout)
+    }
+}
+
 // MARK: - Register Reusable
 
 extension UICollectionView {

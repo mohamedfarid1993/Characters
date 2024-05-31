@@ -35,7 +35,7 @@ class NetworkLayerTest: XCTestCase, HandleAlamofireResponse {
                                                                        response: fakeResponse)
         else { assertionFailure(); return }
         let subscription = MockAPI
-            .getCharacters()
+            .getCharacters(by: nil, in: 1)
             .sink(receiveCompletion: { completion in
                 guard case .failure = completion else { return }
                 XCTFail("Fetching Video Failed")
@@ -80,7 +80,7 @@ extension NetworkLayerTest {
     // MARK: Test URL Request Builder
     
     func testRequestBuilder() {
-        let request = CharactersRouter.getCharacters
+        let request = CharactersRouter.getCharacters(status: nil, page: 1)
         XCTAssertTrue(request.mainURL.contains(Constants.NetworkingConfigs.baseURL))
         XCTAssertEqual(
             request.headers[Constants.NetworkingConfigs.acceptHeaderKey],

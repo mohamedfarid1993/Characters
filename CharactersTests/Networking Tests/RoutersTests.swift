@@ -15,10 +15,13 @@ class RoutersTests: XCTestCase {
     // MARK: Get Characters Request Test
     
     func testGetCharactersRequest() {
+        let status = "Alive"
+        let page = 2
+        let getCharactersRequest = CharactersRouter.getCharacters(status: status, page: page)
         
-        let getCharactersRequest = CharactersRouter.getCharacters
         XCTAssertEqual(getCharactersRequest.path, CharactersRouter.charactersPath)
         XCTAssertEqual(getCharactersRequest.method, .get)
-        XCTAssertNil(getCharactersRequest.parameters)
+        XCTAssertEqual(status, getCharactersRequest.parameters?[CharactersRouter.statusParameterKey] as? String)
+        XCTAssertEqual(page, getCharactersRequest.parameters?[CharactersRouter.pageParameterKey] as? Int)
     }
 }

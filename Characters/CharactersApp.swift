@@ -12,6 +12,7 @@ struct CharactersApp: App {
     var body: some Scene {
         WindowGroup {
             CharactersListViewControllerRepresentable()
+                .ignoresSafeArea()
         }
     }
 }

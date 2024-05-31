@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Combine
+import SwiftUI
 
 class CharactersListViewController: UIViewController {
     
@@ -254,7 +255,10 @@ extension CharactersListViewController: UICollectionViewDelegate {
                 self.viewModel.getCharacters(by: indexPath.item)
             }
         case .characters:
-            print("TODO")
+            guard let character = self.viewModel.character(by: indexPath.item) else { return }
+            let characterDetailsView = CharacterDetailsView(character: character)
+            let hostingController = UIHostingController(rootView: characterDetailsView)
+            self.navigationController?.pushViewController(hostingController, animated: true)
         }
     }
 }

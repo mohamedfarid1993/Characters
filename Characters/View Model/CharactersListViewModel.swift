@@ -10,7 +10,7 @@ import Combine
 
 class CharactersListViewModel: ObservableObject {
     enum State {
-        case loading, loaded(characters: [String])
+        case loading, loaded(characters: [Character])
         case failed(error: Error)
     }
     
@@ -52,8 +52,8 @@ extension CharactersListViewModel {
             .sink(receiveCompletion: { [weak self] completion in
                 guard case let .failure(error) = completion else { return }
                 self?.state = .failed(error: error)
-            }, receiveValue: { [weak self] characters in
-                self?.state = .loaded(characters: [])
+            }, receiveValue: { [weak self] response in
+                self?.state = .loaded(characters: response.characters)
             })
             .store(in: &self.subscriptions)
     }

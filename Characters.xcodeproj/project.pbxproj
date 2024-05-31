@@ -39,6 +39,7 @@
 		72ACE0E62C0A045900D30027 /* StatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0E52C0A045900D30027 /* StatusCollectionViewCell.swift */; };
 		72ACE0E92C0A04E800D30027 /* UICollectioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0E82C0A04E800D30027 /* UICollectioView.swift */; };
 		72ACE0EB2C0A1C6100D30027 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0EA2C0A1C6100D30027 /* CharacterCollectionViewCell.swift */; };
+		72ACE0ED2C0A2A9F00D30027 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0EC2C0A2A9F00D30027 /* UIStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		72ACE0E52C0A045900D30027 /* StatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCollectionViewCell.swift; sourceTree = "<group>"; };
 		72ACE0E82C0A04E800D30027 /* UICollectioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectioView.swift; sourceTree = "<group>"; };
 		72ACE0EA2C0A1C6100D30027 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		72ACE0EC2C0A2A9F00D30027 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				72ACE0E82C0A04E800D30027 /* UICollectioView.swift */,
+				72ACE0EC2C0A2A9F00D30027 /* UIStackView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				72ACE0D32C08FA9500D30027 /* Location.swift in Sources */,
 				72ACE0C42C08F09F00D30027 /* CharactersRouter.swift in Sources */,
 				72ACE0B32C08E80F00D30027 /* URLRequestBuilder.swift in Sources */,
+				72ACE0ED2C0A2A9F00D30027 /* UIStackView.swift in Sources */,
 				72ACE0BA2C08EA3200D30027 /* HandleAlamofireResponse.swift in Sources */,
 				72ACE0CF2C08F75B00D30027 /* Info.swift in Sources */,
 			);

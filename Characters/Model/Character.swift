@@ -13,7 +13,7 @@ struct Character: CodableInit {
     let status: Status
     let species: String
     let type: String
-    let gender: String
+    let gender: Gender
     let origin, location: Location
     let image: String
     let episode: [String]
@@ -26,6 +26,12 @@ enum Status: String, CodableInit {
     case unknown = "unknown"
 }
 
+enum Gender: String, CodableInit {
+    case female = "Female"
+    case male = "Male"
+    case unknown = "unknown"
+}
+
 // MARK: - Factory
 
 extension Character {
@@ -34,7 +40,7 @@ extension Character {
                      status: Status = .alive,
                      species: String = "Monster",
                      type: String = "Rick's Toxic Side",
-                     gender: String = "Male",
+                     gender: Gender = .male,
                      origin: Location = Location.fake(),
                      location: Location = Location.fake(),
                      image: String = "",

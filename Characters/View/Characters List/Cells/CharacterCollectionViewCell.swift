@@ -11,7 +11,11 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     
-    let statusLabel = UILabel()
+    private let contentStackView = UIStackView(axis: .vertical, spacing: 8, alignment: .top, distribution: .fillProportionally)
+
+    private let nameLabel = UILabel()
+    private let speciesLabel = UILabel()
+    private let imageView = UIImageView()
     
     // MARK: Initializers
     
@@ -20,14 +24,10 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
-        self.contentView.layer.borderColor = Theme.Colors.subtitlesLightPurple.cgColor
+        self.contentView.layer.borderColor = Theme.Colors.borderLightPurple.cgColor
         self.contentView.layer.borderWidth = 1
         self.contentView.layer.cornerRadius = 20
         self.contentView.layer.masksToBounds = true
-        self.contentView.autoresizingMask = [
-            UIView.AutoresizingMask.flexibleWidth,
-            UIView.AutoresizingMask.flexibleHeight
-        ]
         self.addSubviews()
         self.addConstraints()
     }
@@ -42,7 +42,22 @@ class CharacterCollectionViewCell: UICollectionViewCell {
 extension CharacterCollectionViewCell {
     
     func setup(with character: Character) {
-        self.statusLabel.text = character.name
+        self.nameLabel.text = character.name
+        self.speciesLabel.text = character.species
+        self.imageView.image = UIImage(systemName: "person.crop.circle")
+        
+        switch character.gender {
+        case .male:
+            self.contentView.backgroundColor = Theme.Colors.maleLightBlue
+            self.contentView.layer.borderColor = Theme.Colors.maleLightBlue.cgColor
+        case .female:
+            self.contentView.backgroundColor = Theme.Colors.femaleLightPink
+            self.contentView.layer.borderColor = Theme.Colors.femaleLightPink.cgColor
+        case .unknown:
+            self.contentView.backgroundColor = .clear
+            self.contentView.layer.borderColor = Theme.Colors.borderLightPurple.cgColor
+        }
+        
         self.layoutIfNeeded()
     }
 }
@@ -52,28 +67,73 @@ extension CharacterCollectionViewCell {
 extension CharacterCollectionViewCell {
     
     private func addSubviews() {
-        self.addStatusLabel()
+        self.addImageView()
+        self.addContentStackView()
+        self.addNameLabel()
+        self.addSpeciesLabel()
     }
     
     private func addConstraints() {
-        self.addStatusLabelConstraints()
+        self.addImageViewConstraints()
+        self.addContentStackViewConstraints()
     }
 }
 
-// MARK: - Add Category Label
+// MARK: - Add Image View
 
 extension CharacterCollectionViewCell {
     
-    private func addStatusLabel() {
-        self.statusLabel.textColor = Theme.Colors.titlesDarkPurple
-        self.contentView.addSubview(self.statusLabel)
+    private func addImageView() {
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.tintColor = .black
+        self.imageView.clipsToBounds = true
+        self.layer.cornerRadius = 8
+        self.contentView.addSubview(self.imageView)
     }
     
-    private func addStatusLabelConstraints() {
-        self.statusLabel.snp.makeConstraints {
-            $0.center.equalTo(self.contentView)
-            $0.top.equalTo(self.contentView).offset(10)
-            $0.leading.equalTo(self.contentView).offset(16)
+    private func addImageViewConstraints() {
+        self.imageView.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(90)
         }
+    }
+}
+
+// MARK: - Add Content Stack View
+
+extension CharacterCollectionViewCell {
+    
+    private func addContentStackView() {
+        self.contentView.addSubview(self.contentStackView)
+    }
+    
+    private func addContentStackViewConstraints() {
+        self.contentStackView.snp.makeConstraints {
+            $0.leading.equalTo(self.imageView.snp.trailing).inset(-16)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(self.imageView.snp.top).inset(8)
+        }
+    }
+}
+
+
+// MARK: - Add Name Label
+
+extension CharacterCollectionViewCell {
+    
+    private func addNameLabel() {
+        self.nameLabel.textColor = Theme.Colors.titlesDarkPurple
+        self.contentStackView.addArrangedSubview(self.nameLabel)
+    }
+}
+
+// MARK: - Add Species Label
+
+extension CharacterCollectionViewCell {
+    
+    private func addSpeciesLabel() {
+        self.speciesLabel.textColor = Theme.Colors.subtitlesLightPurple
+        self.contentStackView.addArrangedSubview(self.speciesLabel)
     }
 }

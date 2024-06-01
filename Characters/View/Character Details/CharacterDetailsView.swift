@@ -30,11 +30,11 @@ struct CharacterDetailsView: View {
                             Status()
                         }
                         HStack {
-                            SpeciesGenderText()
+                            SpeciesGenderText().accessibility(identifier: AccessibilityIdentifiers.speciesGenderText)
                             Spacer()
                         }
                     }.padding(.horizontal)
-                    LocationText().padding(.horizontal)
+                    LocationText().padding(.horizontal).accessibility(identifier: AccessibilityIdentifiers.locationText)
                 }
                 BackButton()
             }
@@ -59,7 +59,7 @@ extension CharacterDetailsView {
                 .background(Circle().frame(width: 40, height: 40).foregroundStyle(.white))
                 .padding(.leading, 24)
                 .padding(.top, 64)
-        }
+        }.accessibility(identifier: AccessibilityIdentifiers.backButton)
     }
     
     // MARK: Character Image View
@@ -71,6 +71,7 @@ extension CharacterDetailsView {
             .frame(width: geometry.size.width, height: geometry.size.width)
             .clipShape(RoundedRectangle(cornerRadius: 24))
             .clipped()
+            .accessibility(identifier: AccessibilityIdentifiers.characterImageView)
     }
     
     // MARK: Character Name
@@ -80,6 +81,7 @@ extension CharacterDetailsView {
             .fontWeight(.semibold)
             .font(.title2)
             .foregroundStyle(Color(uiColor: Theme.Colors.titlesDarkPurple))
+            .accessibility(identifier: AccessibilityIdentifiers.characterName)
     }
     
     // MARK: Status
@@ -91,7 +93,9 @@ extension CharacterDetailsView {
             .padding()
             .background(RoundedRectangle(cornerRadius: 15)
                 .fill(Color.cyan).frame(height: 30)
-            ).frame(height: 30)
+            )
+            .frame(height: 30)
+            .accessibility(identifier: AccessibilityIdentifiers.statusText)
     }
     
     // MARK: Species & Gender Text

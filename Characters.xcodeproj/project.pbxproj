@@ -11,7 +11,8 @@
 		7230DD5B2C08CA9600529868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7230DD5A2C08CA9600529868 /* Assets.xcassets */; };
 		7230DD5E2C08CA9600529868 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7230DD5D2C08CA9600529868 /* Preview Assets.xcassets */; };
 		7230DD722C08CA9700529868 /* CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD712C08CA9700529868 /* CharactersUITests.swift */; };
-		7230DD742C08CA9700529868 /* CharactersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD732C08CA9700529868 /* CharactersUITestsLaunchTests.swift */; };
+		7250D2E12C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */; };
+		7250D2E22C0B5BFC00BEF534 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */; };
 		72ACE0A42C08E44D00D30027 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0A32C08E44D00D30027 /* NetworkManager.swift */; };
 		72ACE0AC2C08E50E00D30027 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 72ACE0AB2C08E50E00D30027 /* Alamofire */; };
 		72ACE0AF2C08E5B300D30027 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0AE2C08E5B300D30027 /* API.swift */; };
@@ -71,7 +72,7 @@
 		7230DD632C08CA9700529868 /* CharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7230DD6D2C08CA9700529868 /* CharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7230DD712C08CA9700529868 /* CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersUITests.swift; sourceTree = "<group>"; };
-		7230DD732C08CA9700529868 /* CharactersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		72ACE0A32C08E44D00D30027 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		72ACE0AE2C08E5B300D30027 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		72ACE0B02C08E61E00D30027 /* CodableInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableInit.swift; sourceTree = "<group>"; };
@@ -189,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				7230DD712C08CA9700529868 /* CharactersUITests.swift */,
-				7230DD732C08CA9700529868 /* CharactersUITestsLaunchTests.swift */,
 			);
 			path = CharactersUITests;
 			sourceTree = "<group>";
@@ -224,6 +224,7 @@
 			children = (
 				72ACE0B52C08E88700D30027 /* Constants.swift */,
 				72ACE0DF2C09FAF000D30027 /* Theme.swift */,
+				7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -479,6 +480,7 @@
 				72ACE0BD2C08EAD300D30027 /* Response.swift in Sources */,
 				72ACE0AF2C08E5B300D30027 /* API.swift in Sources */,
 				72ACE0B62C08E88700D30027 /* Constants.swift in Sources */,
+				7250D2E12C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift in Sources */,
 				72ACE0D12C08F7A300D30027 /* Character.swift in Sources */,
 				72ACE0DE2C09065400D30027 /* CharactersListViewControllerRepresentable.swift in Sources */,
 				72ACE0BF2C08EF5200D30027 /* CustomError.swift in Sources */,
@@ -512,8 +514,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7230DD742C08CA9700529868 /* CharactersUITestsLaunchTests.swift in Sources */,
 				7230DD722C08CA9700529868 /* CharactersUITests.swift in Sources */,
+				7250D2E22C0B5BFC00BEF534 /* AccessibilityIdentifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

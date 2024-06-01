@@ -79,9 +79,9 @@ extension CharactersListViewModel {
     
     func sections() -> [Section] {
         switch self.state {
-        case .loading, .failed:
+        case .loading:
             return [.statuses]
-        case .loaded:
+        case .loaded, .failed:
             return [.statuses, .characters]
         }
     }

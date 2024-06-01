@@ -109,9 +109,17 @@ extension CharactersListViewController {
     private func handleLoaded() {
         self.hideActivityIndicator()
         self.collectionView.isScrollEnabled = true
-        self.collectionView.reloadData()
-        if let selectedStatusIndex = self.viewModel.selectedStatusIndex {
-            self.collectionView.selectItem(at: IndexPath(item: selectedStatusIndex, section: 0), animated: false, scrollPosition: .centeredVertically)
+        let sectionsToReload = IndexSet(integer: 1) // Reload only characters section
+        if self.collectionView.numberOfSections == 1 {
+            self.collectionView.insertSections(sectionsToReload)
+        } else {
+            self.collectionView.reloadSections(sectionsToReload)
+        }
+        DispatchQueue.main.async { [weak self] in
+            if let selectedStatusIndex = self?.viewModel.selectedStatusIndex,
+               let cell = self?.collectionView.cellForItem(at: IndexPath(item: selectedStatusIndex, section: 0)) as? StatusCollectionViewCell {
+                cell.isSelected = true
+            }
         }
     }
     
@@ -161,7 +169,7 @@ extension CharactersListViewController {
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.contentInsetAdjustmentBehavior = .never
-        self.collectionView.allowsMultipleSelection = false
+        self.collectionView.allowsMultipleSelection = true
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -252,17 +260,20 @@ extension CharactersListViewController: UICollectionViewDelegate {
         let sections = self.viewModel.sections()
         switch sections[indexPath.section] {
         case .statuses:
-            if indexPath.item == self.viewModel.selectedStatusIndex {
-                self.viewModel.getCharacters()
-            } else {
-                self.viewModel.getCharacters(by: indexPath.item)
-            }
+            guard indexPath.item != self.viewModel.selectedStatusIndex else { return }
+            // Deselect all statuses except current selected status
+            collectionView.indexPathsForSelectedItems?.filter({ $0 != indexPath }).forEach { collectionView.deselectItem(at: $0, animated: false) }
+            self.viewModel.getCharacters(by: indexPath.item)
         case .characters:
             guard let character = self.viewModel.character(by: indexPath.item) else { return }
             let characterDetailsView = CharacterDetailsView(character: character)
             let hostingController = UIHostingController(rootView: characterDetailsView)
             self.navigationController?.pushViewController(hostingController, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        self.viewModel.getCharacters()
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

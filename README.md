@@ -56,3 +56,16 @@ To get started with the project, follow these steps:
 
 ```bash
 git clone https://github.com/mohamedfarid1993/Characters
+```
+
+2. Go to Characters folder 
+
+```bash
+cd Characters 
+```
+
+3. Open project in Xcode
+
+```bash
+open Characters.xcodeproj
+```

@@ -13,6 +13,7 @@
 		7230DD722C08CA9700529868 /* CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD712C08CA9700529868 /* CharactersUITests.swift */; };
 		7250D2E12C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */; };
 		7250D2E22C0B5BFC00BEF534 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */; };
+		7250D2E52C0B5FA300BEF534 /* CharactersListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250D2E42C0B5FA300BEF534 /* CharactersListViewModelTests.swift */; };
 		72ACE0A42C08E44D00D30027 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0A32C08E44D00D30027 /* NetworkManager.swift */; };
 		72ACE0AC2C08E50E00D30027 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 72ACE0AB2C08E50E00D30027 /* Alamofire */; };
 		72ACE0AF2C08E5B300D30027 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0AE2C08E5B300D30027 /* API.swift */; };
@@ -73,6 +74,7 @@
 		7230DD6D2C08CA9700529868 /* CharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7230DD712C08CA9700529868 /* CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersUITests.swift; sourceTree = "<group>"; };
 		7250D2E02C0B5B5E00BEF534 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
+		7250D2E42C0B5FA300BEF534 /* CharactersListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModelTests.swift; sourceTree = "<group>"; };
 		72ACE0A32C08E44D00D30027 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		72ACE0AE2C08E5B300D30027 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		72ACE0B02C08E61E00D30027 /* CodableInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableInit.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		7230DD662C08CA9700529868 /* CharactersTests */ = {
 			isa = PBXGroup;
 			children = (
+				7250D2E32C0B5F3400BEF534 /* View Models */,
 				72ACE0D42C0901EA00D30027 /* Networking Tests */,
 			);
 			path = CharactersTests;
@@ -192,6 +195,14 @@
 				7230DD712C08CA9700529868 /* CharactersUITests.swift */,
 			);
 			path = CharactersUITests;
+			sourceTree = "<group>";
+		};
+		7250D2E32C0B5F3400BEF534 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				7250D2E42C0B5FA300BEF534 /* CharactersListViewModelTests.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		72ACE0A22C08E43F00D30027 /* Networking */ = {
@@ -504,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7250D2E52C0B5FA300BEF534 /* CharactersListViewModelTests.swift in Sources */,
 				72ACE0D82C09043A00D30027 /* RoutersTests.swift in Sources */,
 				72ACE0D62C09020000D30027 /* NetworkLayerTest.swift in Sources */,
 				72ACE0F42C0A36EE00D30027 /* ImageProviderTests.swift in Sources */,

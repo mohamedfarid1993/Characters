@@ -54,23 +54,11 @@ extension CharactersListViewModel {
     // MARK: Get Characters
     
     func getCharacters(by index: Int? = nil) {
-        if self.selectedStatusIndex != index { // Check to reset page & data
-            self.selectedStatusIndex = index
-            self.page = 1
-            self.characters = []
-            self.state = .loading
-        } else if let info = self.info, info.next != nil, self.state == .loaded {
-            self.page += 1
-        }
-        
-        var status: String? = nil
-        if let index = index {
-            status = self.status(by: index)
-        }
+        let status = self.prepareGetCharactersParameters(by: index)
 
         self.characterssubscriptions?.cancel()
         self.characterssubscriptions = self.api
-            .getCharacters(by: status, in: page)
+            .getCharacters(by: status, in: self.page)
             .sink(receiveCompletion: { [weak self] completion in
                 guard case let .failure(error) = completion, let self = self else { return }
                 self.state = .failed(error: error)
@@ -110,6 +98,23 @@ extension CharactersListViewModel {
     
     func character(by index: Int) -> Character? {
         index < self.characters.count ? self.characters[index] : nil
+    }
+    
+    private func prepareGetCharactersParameters(by index: Int? = nil) -> String? {
+        if self.selectedStatusIndex != index { // Check to reset page & data
+            self.selectedStatusIndex = index
+            self.page = 1
+            self.characters = []
+            self.state = .loading
+        } else if let info = self.info, info.next != nil, self.state == .loaded {
+            self.page += 1
+        }
+        
+        if let index = index {
+            return self.status(by: index)
+        } else {
+            return nil
+        }
     }
         
     func fetchNextPage(at indexPath: IndexPath) {

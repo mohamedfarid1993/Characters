@@ -13,9 +13,9 @@ class CharactersListViewModel: ObservableObject {
         case loading, loaded, failed(error: Error)
     }
     
-    enum Section {
-        case statuses
-        case characters
+    enum Section: Int {
+        case statuses = 0
+        case characters = 1
     }
     
     // MARK: Properties
@@ -28,12 +28,13 @@ class CharactersListViewModel: ObservableObject {
 
     private var characterStatuses = ["alive", "dead", "unknown"]
     private var characters: [Character] = []
+    private var page = 1
+    private var info: Info?
     
     // MARK: Initializers
     
     init(api: API.Type = APIRouter.self) {
         self.api = api
-        self.getCharacters()
     }
 }
 
@@ -44,21 +45,28 @@ extension CharactersListViewModel {
     // MARK: Get Characters
     
     func getCharacters(by index: Int? = nil) {
-        self.selectedStatusIndex = index
-        self.state = .loading
+        if self.selectedStatusIndex != index { // Check to reset page & data
+            self.selectedStatusIndex = index
+            self.page = 1
+            self.characters = []
+            self.state = .loading
+        } else if let info = self.info, info.next != nil {
+            self.page += 1
+        }
         
         var status: String? = nil
         if let index = index {
             status = self.status(by: index)
         }
-        
+
         self.api
-            .getCharacters(by: status)
+            .getCharacters(by: status, in: page)
             .sink(receiveCompletion: { [weak self] completion in
                 guard case let .failure(error) = completion else { return }
                 self?.state = .failed(error: error)
             }, receiveValue: { [weak self] response in
-                self?.characters = response.characters
+                self?.characters += response.characters
+                self?.info = response.info
                 self?.state = .loaded
             })
             .store(in: &self.subscriptions)
@@ -93,5 +101,17 @@ extension CharactersListViewModel {
     
     func character(by index: Int) -> Character? {
         index < self.characters.count ? self.characters[index] : nil
+    }
+        
+    func fetchNextPage(at indexPath: IndexPath) {
+        guard indexPath.section == Section.characters.rawValue else { return }
+        switch self.state {
+        case .loading:
+            return
+        default:
+            let beforeLastIndex = self.numberOfItems(in: Section.characters.rawValue) - 2
+            guard indexPath.item == beforeLastIndex else { return }
+            self.getCharacters(by: self.selectedStatusIndex)
+        }
     }
 }

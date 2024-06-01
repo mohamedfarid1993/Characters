@@ -44,6 +44,7 @@ class CharactersListViewController: UIViewController {
         self.addSubviews()
         self.addSubviewsConstraints()
         self.subscribeToViewModelStatePublisher()
+        self.viewModel.getCharacters()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -252,7 +253,6 @@ extension CharactersListViewController: UICollectionViewDelegate {
         switch sections[indexPath.section] {
         case .statuses:
             if indexPath.item == self.viewModel.selectedStatusIndex {
-                collectionView.deselectItem(at: indexPath, animated: true)
                 self.viewModel.getCharacters()
             } else {
                 self.viewModel.getCharacters(by: indexPath.item)
@@ -263,5 +263,9 @@ extension CharactersListViewController: UICollectionViewDelegate {
             let hostingController = UIHostingController(rootView: characterDetailsView)
             self.navigationController?.pushViewController(hostingController, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.viewModel.fetchNextPage(at: indexPath)
     }
 }

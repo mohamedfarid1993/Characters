@@ -126,6 +126,21 @@ extension CharactersListViewController {
     private func handleFailed(_ error: Error) {
         self.hideActivityIndicator()
         self.collectionView.isScrollEnabled = false
+        self.showErrorAlert(with: error.localizedDescription)
+    }
+    
+    private func showErrorAlert(with message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            self?.viewModel.getCharacters(by: self?.viewModel.selectedStatusIndex)
+        }
+        alertController.addAction(retryAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

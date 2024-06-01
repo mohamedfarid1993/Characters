@@ -9,8 +9,17 @@ import Foundation
 import Combine
 
 class CharactersListViewModel: ObservableObject {
-    enum State {
+    enum State: Equatable {
         case loading, loaded, failed(error: Error)
+        
+        static func == (lhs: State, rhs: State) -> Bool {
+            switch (lhs, rhs) {
+            case (.loading, .loading), (.loaded, .loaded), (.failed, .failed):
+                return true
+            default:
+                return false
+            }
+        }
     }
     
     enum Section: Int {
@@ -50,7 +59,7 @@ extension CharactersListViewModel {
             self.page = 1
             self.characters = []
             self.state = .loading
-        } else if let info = self.info, info.next != nil {
+        } else if let info = self.info, info.next != nil, self.state == .loaded {
             self.page += 1
         }
         
@@ -62,8 +71,8 @@ extension CharactersListViewModel {
         self.api
             .getCharacters(by: status, in: page)
             .sink(receiveCompletion: { [weak self] completion in
-                guard case let .failure(error) = completion else { return }
-                self?.state = .failed(error: error)
+                guard case let .failure(error) = completion, let self = self else { return }
+                self.state = .failed(error: error)
             }, receiveValue: { [weak self] response in
                 self?.characters += response.characters
                 self?.info = response.info

@@ -32,7 +32,7 @@ Welcome to Characters! This is a simple iOS application for viewing a paginated 
 
 ## Enhancements To Be Added
 
-- **Separation Of Different Error Types (Netwrok - Server -Client)**
+- **Separation of Different Error Types (Netwrok - Server -Client)**
 - **Response Caching**
 - **Localization Support**
 - **Better Error State Handling**

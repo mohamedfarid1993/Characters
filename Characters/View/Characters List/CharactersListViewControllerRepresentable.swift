@@ -9,8 +9,11 @@ import Foundation
 import SwiftUI
 
 struct CharactersListViewControllerRepresentable: UIViewControllerRepresentable {
+    
+    var api: API.Type
+    
     func makeUIViewController(context: Context) -> UINavigationController {
-        let charactersListViewController = CharactersListViewController()
+        let charactersListViewController = CharactersListViewController(api: self.api)
         let navigationController = UINavigationController(rootViewController: charactersListViewController)
         return navigationController
     }

@@ -36,6 +36,7 @@ Welcome to Characters! This is a simple iOS application for viewing a paginated 
 - **Response Caching**
 - **Localization Support**
 - **Better Error State Handling**
+- **Better UITests & Unit Testing Coverage**
 
 ## Technologies Used
 

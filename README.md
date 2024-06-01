@@ -6,7 +6,7 @@ Welcome to Characters! This is a simple iOS application for viewing a paginated 
 
 - The UI link didn't open, so I attempted to replicate the designs as closely as possible.
 - Deployment Info is iOS 17.0.
-- A network layer was added to demonstrate scalability, although a simpler solution could have submitted.
+- A network layer was added to demonstrate scalability, although a simpler solution could have been submitted.
 
 ## Challenges
 

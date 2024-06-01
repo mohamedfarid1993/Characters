@@ -32,7 +32,7 @@ class CharactersListViewModel: ObservableObject {
     @Published var state: State = .loading
     
     private let api: API.Type
-    private var subscriptions = Set<AnyCancellable>()
+    private var characterssubscriptions: AnyCancellable?
     private(set) var selectedStatusIndex: Int? = nil
 
     private var characterStatuses = ["alive", "dead", "unknown"]
@@ -68,7 +68,8 @@ extension CharactersListViewModel {
             status = self.status(by: index)
         }
 
-        self.api
+        self.characterssubscriptions?.cancel()
+        self.characterssubscriptions = self.api
             .getCharacters(by: status, in: page)
             .sink(receiveCompletion: { [weak self] completion in
                 guard case let .failure(error) = completion, let self = self else { return }
@@ -78,7 +79,6 @@ extension CharactersListViewModel {
                 self?.info = response.info
                 self?.state = .loaded
             })
-            .store(in: &self.subscriptions)
     }
 }
 

@@ -61,6 +61,7 @@ extension CharactersListViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = "Characters"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
         
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.Colors.titlesDarkPurple]
@@ -293,5 +294,13 @@ extension CharactersListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.viewModel.fetchNextPage(at: indexPath)
+    }
+}
+
+// MARK: - Scroll View Delegate
+
+extension CharactersListViewController {
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true) // To handle bug with the transition from display mode Large Title to Inline
     }
 }

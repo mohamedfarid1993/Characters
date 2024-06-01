@@ -25,10 +25,10 @@ Welcome to Characters! This is a simple iOS application for viewing a paginated 
 - Support for landscape and iPad designs is not necessary.
 
 ## Tests
-- **UI Tests**: Adding an item and searching for it simple test is adding for both CoreData(main branch) and SwiftUI(swift-data branch) 
-- **Unit Tests**: Added tests for Netwrok Layer, Image Provider and Characters List View Model
-- **Maunal Tests**: Manual Testing is conducted to make sure all requirements are met
-- **Memory Leaks Tests**: Memory leaks checks using Instruments(main branch) with zero memory leaks
+- **UI Tests**: Added a simple UITest to open details view and check the existence of all its components.
+- **Unit Tests**: Added tests for Netwrok Layer, Image Provider and Characters List View Model.
+- **Maunal Tests**: Manual Testing is conducted to make sure all requirements are met.
+- **Memory Leaks Tests**: Memory leaks checks using Instruments(main branch) with zero memory leaks.
 
 ## Enhancements To Be Added
 

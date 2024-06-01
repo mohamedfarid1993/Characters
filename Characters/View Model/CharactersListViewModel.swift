@@ -35,7 +35,6 @@ class CharactersListViewModel: ObservableObject {
     private var characterssubscriptions: AnyCancellable?
     private(set) var selectedStatusIndex: Int? = nil
 
-    private var characterStatuses = ["alive", "dead", "unknown"]
     private var characters: [Character] = []
     private var page = 1
     private var info: Info?
@@ -86,14 +85,14 @@ extension CharactersListViewModel {
     func numberOfItems(in section: Int) -> Int {
         switch self.sections()[section] {
         case .statuses:
-            return self.characterStatuses.count
+            return Constants.characterStatuses.count
         case .characters:
             return self.characters.count
         }
     }
     
     func status(by index: Int) -> String? {
-        index < self.characterStatuses.count ? self.characterStatuses[index] : nil
+        index < Constants.characterStatuses.count ? Constants.characterStatuses[index] : nil
     }
     
     func character(by index: Int) -> Character? {

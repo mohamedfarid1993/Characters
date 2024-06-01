@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7209C8942C0BBD1700BCBABC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACE0B52C08E88700D30027 /* Constants.swift */; };
 		7230DD572C08CA9500529868 /* CharactersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230DD562C08CA9500529868 /* CharactersApp.swift */; };
 		7230DD5B2C08CA9600529868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7230DD5A2C08CA9600529868 /* Assets.xcassets */; };
 		7230DD5E2C08CA9600529868 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7230DD5D2C08CA9600529868 /* Preview Assets.xcassets */; };
@@ -515,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7209C8942C0BBD1700BCBABC /* Constants.swift in Sources */,
 				7250D2E52C0B5FA300BEF534 /* CharactersListViewModelTests.swift in Sources */,
 				72ACE0D82C09043A00D30027 /* RoutersTests.swift in Sources */,
 				72ACE0D62C09020000D30027 /* NetworkLayerTest.swift in Sources */,

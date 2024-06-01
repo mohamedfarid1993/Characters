@@ -99,7 +99,7 @@ extension CharactersListViewModelTests {
         let firstStatus = self.viewModel.status(by: 0)
         let nonExistantStatus = self.viewModel.status(by: 10)
         
-        XCTAssertNotNil(firstStatus)
+        XCTAssertEqual(firstStatus, Constants.characterStatuses[0])
         XCTAssertNil(nonExistantStatus)
     }
     

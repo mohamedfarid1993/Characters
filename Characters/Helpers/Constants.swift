@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     
-    // MARK: - Networking Configuration
+    // MARK: Networking Configuration
     
     enum NetworkingConfigs {
         static let acceptHeaderKey = "Accept"
@@ -17,4 +17,8 @@ enum Constants {
         static let pageParameterKey = "page"
         static let baseURL = "https://rickandmortyapi.com/api/"
     }
+    
+    // MARK: Character statuses
+    
+    static let characterStatuses = ["alive", "dead", "unknown"]
 }
